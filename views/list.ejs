@@ -1,0 +1,33 @@
+<!-- header template ejs -->
+<%- include("header"); -%>
+<body>
+  <div class="box" id="heading">
+
+
+    <h1> <%= listTitle %></h1>
+  </div>
+
+<div class="box">
+  <!-- old for loop -->
+<!-- for (var i=0; i<newListItems.length; i++) { > -->
+<!-- //forEach loop -->
+<% newListItems.forEach(function(item){%>
+  <form  action="/delete" method="post">
+  <div class="item">
+    <!-- //checkbox -->
+    <input type="checkbox" onChange="this.form.submit()" name="checkbox" value="<%=item._id%>">
+      <p> <%=item.name %></p>
+
+  </div>
+  <input type="hidden" name="listName" value="<%=listTitle%>"></input>
+    </form>
+<%})%>
+<!-- //next to do entered plus sign -->
+  <form action="/" method="post">
+    <input type="text" name="nextToDo" placeholder="Next to do" autocomplete="off"autofocus>
+    <button type="submit" name="list" value=<%= listTitle %>>+</button>
+  </form>
+</div>
+
+<!-- ejs footer template -->
+<%- include("footer"); -%>
